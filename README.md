@@ -1,1 +1,0 @@
-# ayufan7.lab4
