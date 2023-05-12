@@ -22,6 +22,18 @@
         <div class="main-text">
             <h1>Undergraduate Program</h1>
             <p>Undergraduates must take a specific list of courses.... that will take them through different aspects of the technical world....
+                on: 
+  push:
+    branches: ["lab5"]
+name: make changes
+jobs:
+  web-deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    
+    - uses: stefanzweifel/git-auto-commit-action@v4
             </p>
         </div>
         </section>
