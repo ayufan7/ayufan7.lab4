@@ -20,20 +20,33 @@
                 </div>
             </nav>
         <div class="main-text">
-            <h1>Undergraduate Program 46666666666666666666666666666666666666666666666666666666666666666666</h1>
+            <h1>Undergraduate Program </h1>
             <p>Undergraduates must take a specific list of courses.... that will take them through different aspects of the technical world....
                 on: 
-  push:
-    branches: ["lab5"]
-name: make changes
-jobs:
-  web-deploy:
-    name: Deploy
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
-    
-    - uses: stefanzweifel/git-auto-commit-action@v4
+                name: Deploy static content to Pages
+
+                on:
+                  # Runs on pushes targeting the default branch
+                  push:
+                    branches: ["lab5"]
+                jobs:
+                  # Single deploy job since we're just deploying
+                  web-deploy:
+                    name: 🎉 Deploy
+                    runs-on: ubuntu-latest
+                    steps:
+                      - name: Checkout
+                        uses: actions/checkout@v2
+                      - name: Deploy file
+                        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+                        with:
+                          server: gl.umbc.edu
+                          username: ${{secrets.ftp_username}}
+                          password: ${{ secrets.ftp_password }}
+                          local_path: './*'
+                          remote_path: '/afs/umbc.edu/users/a/f/afantaw1/pub/swe2023'
+                          sftp_only: true
+                          
             </p>
         </div>
         </section>
